@@ -34,6 +34,19 @@ const RegisterPage: React.FC = () => {
       setError('Passwords do not match');
       return;
     }
+
+    const password = formData.password;
+    const isStrongPassword =
+      password.length >= 8 &&
+      /[a-z]/.test(password) &&
+      /[A-Z]/.test(password) &&
+      /\d/.test(password) &&
+      /[!@#$%^&*(),.?":{}|<>]/.test(password);
+
+    if (!isStrongPassword) {
+      setError('Password is too weak');
+      return;
+    }
     
     try {
       setError('');
