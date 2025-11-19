@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Search, ChevronDown, User, ShoppingCart, LogIn } from 'lucide-react';
+import { Menu, X, Search, ChevronDown, User, ShoppingCart, LogIn, Sun, Moon } from 'lucide-react';
 import Logo from './Logo';
+import { useTheme } from '../../contexts/ThemeContext';
 
 const Header: React.FC = () => {
+  const { theme, toggleTheme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -91,6 +93,9 @@ const Header: React.FC = () => {
               <User size={18} />
               <span>My Account</span>
             </Link>
+            <button onClick={toggleTheme} className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700" data-testid="theme-toggle-button">
+              {theme === 'light' ? <Moon size={18} /> : <Sun size={18} />}
+            </button>
             <Link to="/login" className="btn-primary flex items-center gap-1">
               <LogIn size={18} />
               <span>Sign In</span>
@@ -170,6 +175,12 @@ const Header: React.FC = () => {
                 </div>
               </div>
               
+              <div className="flex items-center justify-between">
+                <span className="font-medium">Theme</span>
+                <button onClick={toggleTheme} className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
+                  {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
+                </button>
+              </div>
               <Link to="/login" className="block py-2 font-medium hover:text-primary-500">Sign In</Link>
               <Link to="/register" className="block py-2 font-medium hover:text-primary-500">Register</Link>
               <Link to="/post-ad" className="btn-primary block text-center mt-4">Post Ad</Link>
