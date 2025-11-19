@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: 'class',
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
@@ -10,7 +11,7 @@ export default {
           200: '#ffc199',
           300: '#ffa366',
           400: '#ff8533',
-          500: '#ff6600', // Primary orange
+          500: '#ff6600',
           600: '#cc5200',
           700: '#993d00',
           800: '#662900',
@@ -23,13 +24,18 @@ export default {
           300: '#869ac7',
           400: '#657fb8',
           500: '#4464a9',
-          600: '#2c5697', // Secondary blue
+          600: '#2c5697',
           700: '#214070',
           800: '#16294a',
           900: '#0b1525',
         },
         accent: {
-          500: '#37b54a', // Accent green
+          500: '#37b54a',
+        },
+        dark: {
+          primary: '#1a1a1a',
+          secondary: '#2c2c2c',
+          text: '#f2f2f2',
         },
       },
       fontFamily: {
